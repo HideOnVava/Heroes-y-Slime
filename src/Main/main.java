@@ -1,5 +1,6 @@
 package Main;
 
+import Clases.Heroe;
 import java.util.Scanner;
 
 public class main {
@@ -14,8 +15,8 @@ public class main {
                 case 1 -> {}
                 case 2 -> {}
                 case 3 -> {}
-                case 4 -> {limpiar(); esperar("Saliste.");}
-                default -> {limpiar(); esperar("Ingresa una opcion valida.");}
+                case 4 -> {limpiar();}
+                default -> {esperar("Ingresa una opcion valida.");}
             }
         }//Fin del while
     }//Fin del main
@@ -23,9 +24,9 @@ public class main {
     public static int opciones(){
         Scanner mS = new Scanner(System.in);
         System.out.println("OPCIONES.");
-        System.out.println("1.");
-        System.out.println("2.");
-        System.out.println("3.");
+        System.out.println("1. Iniciar aventura.");
+        System.out.println("2. Crear heroe.");
+        System.out.println("3. Ver tus heroes.");
         System.out.println("4. Salir del programa");
         System.out.print("Ingresa una opcion: ");
         return mS.nextInt();
