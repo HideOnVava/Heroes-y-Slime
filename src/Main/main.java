@@ -7,14 +7,39 @@ public class main {
 
     public static void main(String[] args) {
         int n = 0;
-        while(true){
-            System.out.print("Ingresa -1 para salir: ");
-            n = MyScanner.nextInt();
-            if(n == -1){
-                break;
+        while(!(n == 4)){
+            limpiar();
+            n = opciones();
+            switch(n){
+                case 1 -> {}
+                case 2 -> {}
+                case 3 -> {}
+                case 4 -> {limpiar(); esperar("Saliste.");}
+                default -> {limpiar(); esperar("Ingresa una opcion valida.");}
             }
-            System.out.println("Decidiste continuar.");
         }//Fin del while
     }//Fin del main
+    
+    public static int opciones(){
+        Scanner mS = new Scanner(System.in);
+        System.out.println("OPCIONES.");
+        System.out.println("1.");
+        System.out.println("2.");
+        System.out.println("3.");
+        System.out.println("4. Salir del programa");
+        return mS.nextInt();
+    }
+    
+    public static void limpiar(){
+        for(int i = 0; i < 20; i++){
+            System.out.println();
+        }
+    }
+    
+    public static void esperar(String s){
+        Scanner mS = new Scanner(System.in);
+        System.out.print(s + " Presiona enter para continuar.");
+        mS.nextLine();
+    }
     
 }
