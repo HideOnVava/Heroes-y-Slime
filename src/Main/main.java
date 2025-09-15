@@ -5,29 +5,33 @@ import java.util.Scanner;
 
 public class main {
     public static Scanner MyScanner = new Scanner(System.in);
+    public static Heroe[] arreglo = new Heroe[5];
+    public static int indice = 0;
 
     public static void main(String[] args) {
         int n = 0;
-        while(!(n == 4)){
+        while(!(n == 5)){
             limpiar();
-            n = opciones();
+            n = opcionesMenu();
             switch(n){
                 case 1 -> {}
                 case 2 -> {}
                 case 3 -> {}
-                case 4 -> {limpiar();}
+                case 4 -> {}
+                case 5 -> {}
                 default -> {esperar("Ingresa una opcion valida.");}
             }
         }//Fin del while
     }//Fin del main
     
-    public static int opciones(){
+    public static int opcionesMenu(){
         Scanner mS = new Scanner(System.in);
-        System.out.println("OPCIONES.");
+        System.out.println("MENU OPCIONES.");
         System.out.println("1. Iniciar aventura.");
         System.out.println("2. Crear heroe.");
         System.out.println("3. Ver tus heroes.");
-        System.out.println("4. Salir del programa");
+        System.out.println("4. Modificar heroes");
+        System.out.println("5. Salir del programa");
         System.out.print("Ingresa una opcion: ");
         return mS.nextInt();
     }
