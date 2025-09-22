@@ -15,7 +15,7 @@ public class main {
             switch(n){
                 case 1 -> {}
                 case 2 -> {crearheroe();}
-                case 3 -> {}
+                case 3 -> {listaheroes();}
                 case 4 -> {}
                 case 5 -> {salir();}
                 default -> {limpiar(); esperar("Ingresa un valor valido.");}
@@ -52,6 +52,22 @@ public class main {
         esperar("Heroe "+nombre_hero+" creado exitosamente!");
     }
     
+    public static void listaheroes(){
+        limpiar();
+        if(indice == 0){
+            esperar("Crea un heroe primero!");
+            return;
+        }
+        System.out.println("TUS HEROES.");
+        for(int i = 0; i < indice; i++){
+            System.out.println((i+1)+". "+arreglo[i].getNombre() + " - Nivel "
+                    +arreglo[i].getNivel() + " | Vida "
+                    +arreglo[i].getVidaActual() +"/"+arreglo[i].getVidaMaxima()
+                    +" | XP "+arreglo[i].getXp() +"/"+arreglo[i].getNivel()*4.5);
+        }
+        System.out.println("==========================");
+        esperar("");
+    }
     
     
     
