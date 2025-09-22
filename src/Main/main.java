@@ -10,11 +10,11 @@ public class main {
     
     public static void main(String[] args) {
         int n = 0;
-        while(!(n == 5)){
+        while(n != 5){
             n = opcionesMenu();
             switch(n){
                 case 1 -> {}
-                case 2 -> {}
+                case 2 -> {crearheroe();}
                 case 3 -> {}
                 case 4 -> {}
                 case 5 -> {salir();}
@@ -26,7 +26,7 @@ public class main {
     public static int opcionesMenu(){
         limpiar();
         Scanner mS = new Scanner(System.in);
-        System.out.println("MENU OPCIONES.");
+        System.out.println("TABERNA DE HEROES.");
         System.out.println("1. Iniciar aventura.");
         System.out.println("2. Crear heroe.");
         System.out.println("3. Ver tus heroes.");
@@ -35,6 +35,51 @@ public class main {
         System.out.print("Ingresa una opcion: ");
         return mS.nextInt();
     }
+    
+    //Funciones de Heroes:
+    public static void crearheroe(){
+        limpiar();
+        if(indice == 5){
+            esperar("Ya has creado 5 heroes!");
+            return;
+        }
+        Scanner mS = new Scanner(System.in);
+        System.out.print("Ingresa el nombre de tu heroe: ");
+        String nombre_hero = mS.nextLine();
+        Heroe hero_a = new Heroe(nombre_hero);
+        arreglo[indice] = hero_a;
+        indice++;
+        esperar("Heroe "+nombre_hero+" creado exitosamente!");
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Funciones Utilidad:
     
     public static void salir(){
         limpiar();

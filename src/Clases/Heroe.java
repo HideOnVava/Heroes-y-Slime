@@ -8,7 +8,6 @@ public class Heroe {
         private int vida_actual;
         private int vida_maxima;
         private int fuerza;
-        private double ataque;
     //Constructores (default y parametrizado):
         public Heroe(){
             nombre = "";
@@ -17,7 +16,6 @@ public class Heroe {
             vida_actual = 0;
             vida_maxima = 0;
             fuerza = 0;
-            ataque = 0;
         }
         
         public Heroe(String nombre){
@@ -27,7 +25,6 @@ public class Heroe {
             vida_actual = 20;
             vida_maxima = 20;
             fuerza = 5;
-            ataque = fuerza + (nivel * 1.5);
         }
     //Metodos getters y setters:
         public String getNombre() {return nombre;}
@@ -48,8 +45,9 @@ public class Heroe {
         public int getFuerza() {return fuerza;}
         public void setFuerza(int fuerza) {this.fuerza = fuerza;}
         
-        public double getAtaque() {return ataque;}
-        public void setAtaque(double ataque) {this.ataque = ataque;}
+        public double getAtaque() {
+            return fuerza + (nivel * 1.5);
+        }   
     //Metodos:
         public void mostrar(){
             System.out.println("Nombre: "+ nombre);
@@ -57,7 +55,7 @@ public class Heroe {
             System.out.println("Xp: "+ xp +"/"+ (nivel*4.5));
             System.out.println("Vida: "+ vida_actual +"/"+ vida_maxima);
             System.out.println("Fuerza: "+ fuerza);
-            System.out.println("Ataque: "+ ataque);
+            System.out.println("Ataque: "+ getAtaque());
         }
         
         public void recibirXp(int xp){
