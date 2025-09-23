@@ -1,5 +1,7 @@
 package Clases;
 
+import java.util.Random;
+
 public class Heroe {
     //Atributos:
         private String nombre;
@@ -8,16 +10,9 @@ public class Heroe {
         private int vida_actual;
         private int vida_maxima;
         private int fuerza;
-    //Constructores (default y parametrizado):
-        public Heroe(){
-            nombre = "";
-            nivel = 0;
-            xp = 0;
-            vida_actual = 0;
-            vida_maxima = 0;
-            fuerza = 0;
-        }
         
+        public Mochila mochila;
+    //Constructores (default y parametrizado):
         public Heroe(String nombre){
             this.nombre = nombre;
             nivel = 1;
@@ -25,6 +20,8 @@ public class Heroe {
             vida_actual = 20;
             vida_maxima = 20;
             fuerza = 5;
+            
+            mochila = new Mochila();
         }
     //Metodos getters y setters:
         public String getNombre() {return nombre;}
@@ -45,10 +42,16 @@ public class Heroe {
         public int getFuerza() {return fuerza;}
         public void setFuerza(int fuerza) {this.fuerza = fuerza;}
         
+    //Metodos:
         public double getAtaque() {
+            Random rnd = new Random();
+            int n = rnd.nextInt(1,4);
+            if(n == 1){
+                return (fuerza + (nivel * 1.5) * 1.5);
+            }
             return fuerza + (nivel * 1.5);
         }   
-    //Metodos:
+        
         public void mostrar(){
             System.out.println("Nombre: "+ nombre);
             System.out.println("Nivel: "+ nivel);

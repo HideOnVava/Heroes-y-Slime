@@ -16,7 +16,7 @@ public class main {
             switch(n){
                 case 1 -> {iniciaraventura();}
                 case 2 -> {crearheroe();}
-                case 3 -> {listaheroes();;}
+                case 3 -> {listaheroes();}
                 case 4 -> {modificarheroes();}
                 case 5 -> {salir();}
                 default -> {limpiar(); esperar("Ingresa un valor valido.");}
@@ -69,7 +69,7 @@ public class main {
                     +" | XP "+arreglo[i].getXp() +"/"+arreglo[i].getNivel()*4.5);
         }
         System.out.println("==========================================");
-        esperar("");
+        esperar(".");
     }
     
     public static void modificarheroes(){
@@ -203,6 +203,5 @@ public class main {
         Scanner mS = new Scanner(System.in);
         System.out.print(s + " Presiona enter para continuar.");
         mS.nextLine();
-    }
-    
+    }  
 }
