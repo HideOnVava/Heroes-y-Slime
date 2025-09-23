@@ -16,7 +16,7 @@ public class main {
             switch(n){
                 case 1 -> {iniciaraventura();}
                 case 2 -> {crearheroe();}
-                case 3 -> {listaheroes(); esperar("");}
+                case 3 -> {listaheroes();;}
                 case 4 -> {modificarheroes();}
                 case 5 -> {salir();}
                 default -> {limpiar(); esperar("Ingresa un valor valido.");}
@@ -69,6 +69,7 @@ public class main {
                     +" | XP "+arreglo[i].getXp() +"/"+arreglo[i].getNivel()*4.5);
         }
         System.out.println("==========================================");
+        esperar("");
     }
     
     public static void modificarheroes(){
@@ -77,7 +78,14 @@ public class main {
             esperar("Crea un heroe primero!");
             return;
         }
-        listaheroes();
+        //Lista Heroes
+        System.out.println("SELECCIONA UN HEROE.");
+        System.out.println("===================================");
+        for(int i = 0; i < indice; i++){
+            System.out.println((i+1)+". "+arreglo[i].getNombre());
+        }
+        System.out.println("===================================");
+        //Lista Heroes
         Scanner mS = new Scanner(System.in);
         System.out.print("Ingresa el nombre del heroe a modificar: ");
         String nombre = mS.nextLine();
@@ -140,7 +148,14 @@ public class main {
             esperar("Crea un heroe primero!");
             return;
         }
-        listaheroes();
+        //Lista Heroes
+        System.out.println("SELECCIONA UN HEROE.");
+        System.out.println("===================================");
+        for(int i = 0; i < indice; i++){
+            System.out.println((i+1)+". "+arreglo[i].getNombre());
+        }
+        System.out.println("===================================");
+        //Lista Heroes
         Scanner mS = new Scanner(System.in);
         System.out.print("Ingresa el nombre del heroe: ");
         String nombre = mS.nextLine();

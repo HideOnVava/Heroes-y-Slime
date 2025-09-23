@@ -58,11 +58,11 @@ public class Heroe {
             System.out.println("Ataque: "+ getAtaque());
         }
         
-        public void recibirXp(int xp){
-            this.xp += xp;
-            if(this.xp >= (nivel*4.5)){
+        public void recibirXp(int xp_obtenida){
+            xp += xp_obtenida;
+            if(xp >= (nivel*4.5)){
+                xp = xp - (int)(nivel*4.5);
                 subirNivel();
-                this.xp = this.xp - (int)(nivel*4.5);
             }
         }
         

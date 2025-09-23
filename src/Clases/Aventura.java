@@ -14,6 +14,6 @@ public class Aventura {
         public Heroe getHeroe(){return h1;}
     //Metodos:
         public void inicio(){
-            h1.recibirXp(5);
+            
         }
 }
