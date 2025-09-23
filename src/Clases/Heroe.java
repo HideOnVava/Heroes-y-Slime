@@ -69,10 +69,19 @@ public class Heroe {
             }
         }
         
+        public void recibirDaño(int daño){
+            vida_actual -= daño;
+            vida_actual = Math.max(vida_actual,0);
+        }
+        
         public void subirNivel(){
             nivel++;
             vida_maxima += (5*nivel);
             vida_actual = vida_maxima;
             fuerza += 2;
+        }
+        
+        public boolean vivo(){
+            return vida_actual > 0;
         }
 }

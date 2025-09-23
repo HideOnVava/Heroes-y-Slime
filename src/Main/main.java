@@ -63,10 +63,17 @@ public class main {
         }
         System.out.println("LISTA DE TUS HEROES.");
         for(int i = 0; i < indice; i++){
+            String s = "";
+            if(arreglo[i].vivo()){
+                s = " - VIVO";
+            }else{
+                s = " - MUERTO";
+            }
             System.out.println((i+1)+". "+arreglo[i].getNombre() + " - Nivel "
                     +arreglo[i].getNivel() + " | Vida "
                     +arreglo[i].getVidaActual() +"/"+arreglo[i].getVidaMaxima()
-                    +" | XP "+arreglo[i].getXp() +"/"+arreglo[i].getNivel()*4.5);
+                    +" | XP "+arreglo[i].getXp() +"/"+arreglo[i].getNivel()*4.5
+                    + s);
         }
         System.out.println("==========================================");
         esperar(".");
@@ -166,7 +173,13 @@ public class main {
         }
         Aventura nueva_aventura = new Aventura(arreglo[id]);
         nueva_aventura.inicio();
+        limpiar();
         arreglo[id] = nueva_aventura.getHeroe();
+        if(arreglo[id].vivo()){
+            esperar("Volviste vivo al campamento!");
+        }else{
+            esperar("Tu heroe a muerto!");
+        }
     }
     
     

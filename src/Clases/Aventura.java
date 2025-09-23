@@ -17,14 +17,14 @@ public class Aventura {
     //Metodos:
         public void inicio(){
             int n = 0;
-            while(n != 5){
+            while(h1.vivo()){
                 n = menu();
                 switch(n){
                     case 1 -> {combate();}
                     case 2 -> {inventario();}
                     case 3 -> {}
                     case 4 -> {}
-                    case 5 -> {}
+                    case 5 -> {return;}
                     default -> {limpiar(); esperar("Ingresa una opcion valida!");}
                 }
             }
