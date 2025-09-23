@@ -1,5 +1,6 @@
 package Main;
 
+import Clases.Aventura;
 import Clases.Heroe;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class main {
         while(n != 5){
             n = opcionesMenu();
             switch(n){
-                case 1 -> {}
+                case 1 -> {iniciaraventura();}
                 case 2 -> {crearheroe();}
                 case 3 -> {listaheroes(); esperar("");}
                 case 4 -> {modificarheroes();}
@@ -133,7 +134,24 @@ public class main {
         return mS.nextInt();
     }
     
-    
+    public static void iniciaraventura(){
+        limpiar();
+        if(indice == 0){
+            esperar("Crea un heroe primero!");
+            return;
+        }
+        listaheroes();
+        Scanner mS = new Scanner(System.in);
+        System.out.print("Ingresa el nombre del heroe: ");
+        String nombre = mS.nextLine();
+        int id = obtenerId(nombre);
+        if(id == -1){
+            esperar("Heroe no encontrado!");
+            return;
+        }
+        Aventura nueva_aventura = new Aventura(arreglo[id]);
+        arreglo[id] = nueva_aventura.inicio();
+    }
     
     
     
