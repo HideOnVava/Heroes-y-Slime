@@ -150,7 +150,8 @@ public class main {
             return;
         }
         Aventura nueva_aventura = new Aventura(arreglo[id]);
-        arreglo[id] = nueva_aventura.inicio();
+        nueva_aventura.inicio();
+        arreglo[id] = nueva_aventura.getHeroe();
     }
     
     

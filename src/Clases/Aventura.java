@@ -11,9 +11,9 @@ public class Aventura {
             h1 = hero;
         }
     //Metodos getters y setters:
+        public Heroe getHeroe(){return h1;}
     //Metodos:
-        public Heroe inicio(){
+        public void inicio(){
             h1.recibirXp(5);
-            return h1;
         }
 }
