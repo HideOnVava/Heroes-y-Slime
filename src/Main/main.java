@@ -15,8 +15,8 @@ public class main {
             switch(n){
                 case 1 -> {}
                 case 2 -> {crearheroe();}
-                case 3 -> {listaheroes();}
-                case 4 -> {}
+                case 3 -> {listaheroes(); esperar("");}
+                case 4 -> {modificarheroes();}
                 case 5 -> {salir();}
                 default -> {limpiar(); esperar("Ingresa un valor valido.");}
             }
@@ -27,11 +27,13 @@ public class main {
         limpiar();
         Scanner mS = new Scanner(System.in);
         System.out.println("TABERNA DE HEROES.");
-        System.out.println("1. Iniciar aventura.");
-        System.out.println("2. Crear heroe.");
-        System.out.println("3. Ver tus heroes.");
+        System.out.println("===================================");
+        System.out.println("1. Iniciar aventura");
+        System.out.println("2. Crear heroe");
+        System.out.println("3. Ver tus heroes");
         System.out.println("4. Modificar heroes");
         System.out.println("5. Salir del programa");
+        System.out.println("===================================");
         System.out.print("Ingresa una opcion: ");
         return mS.nextInt();
     }
@@ -58,23 +60,78 @@ public class main {
             esperar("Crea un heroe primero!");
             return;
         }
-        System.out.println("TUS HEROES.");
+        System.out.println("LISTA DE TUS HEROES.");
         for(int i = 0; i < indice; i++){
             System.out.println((i+1)+". "+arreglo[i].getNombre() + " - Nivel "
                     +arreglo[i].getNivel() + " | Vida "
                     +arreglo[i].getVidaActual() +"/"+arreglo[i].getVidaMaxima()
                     +" | XP "+arreglo[i].getXp() +"/"+arreglo[i].getNivel()*4.5);
         }
-        System.out.println("==========================");
-        esperar("");
+        System.out.println("==========================================");
     }
     
+    public static void modificarheroes(){
+        limpiar();
+        if(indice == 0){
+            esperar("Crea un heroe primero!");
+            return;
+        }
+        listaheroes();
+        Scanner mS = new Scanner(System.in);
+        System.out.print("Ingresa el nombre del heroe a modificar: ");
+        String nombre = mS.nextLine();
+        int id = obtenerId(nombre);
+        if(id == -1){
+            esperar("Heroe no encontrado!");
+            return;
+        }
+        int n = 0;
+        while(n != 3){
+            n = opcionesConfig(id);
+            switch(n){
+                case 1 -> {
+                limpiar();
+                    System.out.println("");
+                    System.out.print("Ingresa el nuevo nombre: ");
+                    String new_nombre = mS.nextLine();
+                    arreglo[id].setNombre(new_nombre);
+                    esperar("Nombre cambiado!");
+                }
+                case 2 -> {
+                    for(int i = id; i < (indice-1); i++){
+                        arreglo[i] = arreglo[i+1];
+                    }
+                    arreglo[indice-1] = null;
+                    indice--;
+                    esperar("Heroe eliminado");
+                    return;
+                }
+                case 3 -> {}
+            }
+        }
+    }
     
+    public static int obtenerId(String nombre){
+        for(int i = 0; i < indice; i++){
+            if(arreglo[i].getNombre().equals(nombre)){
+                return i;
+            }
+        }
+        return -1;
+    }
     
-    
-    
-    
-    
+    public static int opcionesConfig(int id){
+        limpiar();
+        Scanner mS = new Scanner(System.in);
+        System.out.println("MODIFICA A TU HEROE. ["+arreglo[id].getNombre()+"]!");
+        System.out.println("===================================");
+        System.out.println("1. Cambiar nombre");
+        System.out.println("2. Eliminar heroe");
+        System.out.println("3. Volver al menu");
+        System.out.println("===================================");
+        System.out.print("Ingresa una opcion: ");
+        return mS.nextInt();
+    }
     
     
     
