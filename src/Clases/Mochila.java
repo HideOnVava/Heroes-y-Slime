@@ -22,6 +22,6 @@ public class Mochila {
             System.out.println("Monedas. x"+monedas);
             System.out.println("Pociones. x"+pociones);
             System.out.println("Llaves. x"+llaves);
-            System.out.println("================= s==============");
+            System.out.println("===============================");
         }
 }

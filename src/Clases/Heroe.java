@@ -7,7 +7,7 @@ public class Heroe {
         private String nombre;
         private int nivel;
         private int xp;
-        private int vida_actual;
+        private double vida_actual;
         private int vida_maxima;
         private int fuerza;
         
@@ -33,7 +33,7 @@ public class Heroe {
         public int getXp() {return xp;}
         public void setXp(int xp) {this.xp = xp;}
         
-        public int getVidaActual() {return vida_actual;}
+        public double getVidaActual() {return vida_actual;}
         public void setVidaActual(int vida_actual) {this.vida_actual = vida_actual;}
         
         public int getVidaMaxima() {return vida_maxima;}
@@ -69,7 +69,7 @@ public class Heroe {
             }
         }
         
-        public void recibirDaño(int daño){
+        public void recibirDaño(double daño){
             vida_actual -= daño;
             vida_actual = Math.max(vida_actual,0);
         }

@@ -1,5 +1,6 @@
 package Clases;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Aventura {
@@ -47,7 +48,31 @@ public class Aventura {
         
         public void combate(){
             limpiar();
-            
+            //===============================================
+            Random rnd = new Random();
+            String rareza = "";
+            int n = rnd.nextInt(1,10);
+            if(n == 1){
+                rareza = "Legendario";
+            }else{
+                n = rnd.nextInt(1,8);
+                if(n == 1){
+                    rareza = "Epico";
+                }else{
+                    n = rnd.nextInt(1,5);
+                    if(n == 1){
+                        rareza = "Raro";
+                    }else{
+                        rareza = "Comun";
+                    }
+                }
+            }
+            Slime enemigo = new Slime(rareza);
+            enemigo.setRareza();
+            //===============================================
+            enemigo.mostrar_stats();
+            h1.recibirDaño(enemigo.daño);
+            esperar(".");
         }
         
         public void inventario(){
