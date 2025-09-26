@@ -6,12 +6,14 @@ import java.util.Scanner;
 public class Aventura {
     //Atributos:
         private Heroe h1;
+        private Slime s1;
     //Constructores:
         public Aventura(){
             h1 = null;
         }
         public Aventura(Heroe hero){
             h1 = hero;
+            Slime enemigo = new Slime("Comun");
         }
     //Metodos getters y setters:
         public Heroe getHeroe(){return h1;}
@@ -49,29 +51,31 @@ public class Aventura {
         public void combate(){
             limpiar();
             //===============================================
-            Random rnd = new Random();
-            String rareza = "";
-            int n = rnd.nextInt(1,10);
-            if(n == 1){
-                rareza = "Legendario";
-            }else{
-                n = rnd.nextInt(1,8);
-                if(n == 1){
-                    rareza = "Epico";
-                }else{
-                    n = rnd.nextInt(1,5);
-                    if(n == 1){
-                        rareza = "Raro";
-                    }else{
-                        rareza = "Comun";
-                    }
-                }
-            }
-            Slime enemigo = new Slime(rareza);
-            enemigo.setRareza();
+            //PREPAPRAR TODO PARA EL COMBATE
+            boolean turno = true; // Turno del heroe inicia.
             //===============================================
-            enemigo.mostrar_stats();
-            h1.recibirDaño(enemigo.daño);
+            //GENERAR AL ENEMIGO EN ESTE COMBATE
+            String rareza = generarRareza();
+            s1 = new Slime(rareza);
+            s1.setRareza();
+            //===============================================
+            //INICIAR SISTEMA DE COMBATE
+            while(h1.vivo() && s1.vivo()){
+                if(turno){
+                    //TURNO DEL HEROE
+                    int n = 0;
+                    n = opcionesTurno();
+                    switch(n){
+                        case 1 -> {heroe_ataca();}
+                        case 2 -> {s1.recibirDaño(999);}
+                    }
+                }else{
+                    //TURNO DEL SLIME
+                    turno_slime();
+                }
+                turno = !turno;
+            }
+            //===============================================
             esperar(".");
         }
         
@@ -81,12 +85,41 @@ public class Aventura {
             esperar(".");
         }
         
+        public String generarRareza(){
+            Random rnd = new Random();
+            int n = rnd.nextInt(1,101);
+            if(n == 1){
+                return "Mythic";
+            }
+            if(n <= 4){
+                return "Legendario";
+            }
+            if(n <= 20){
+                return "Epico";
+            }
+            if(n <= 45){
+                return "Raro";
+            }
+            return "Comun";
+        }
         
+        public int opcionesTurno(){
+            limpiar();
+            Scanner MyScanner = new Scanner(System.in);
+            System.out.println("1. Atacar!");
+            System.out.println("2. Huir!");
+            System.out.print("Ingresa una opcion: ");
+            return MyScanner.nextInt();
+        }
         
+        public void heroe_ataca(){
+            s1.recibirDaño(h1.getAtaque());
+        }
         
-        
-        
-        
+        public void turno_slime(){
+            //Slime ataca
+            h1.recibirDaño(s1.daño);
+        }
         
         
         

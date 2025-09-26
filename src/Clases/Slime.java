@@ -27,6 +27,7 @@ public class Slime {
                 case "Raro" -> {raro();}
                 case "Epico" -> {epico();}
                 case "Legendario" -> {legendario();}
+                case "Mythic" -> {mythic();}
             }
             calcular_stats();
         }
@@ -64,11 +65,28 @@ public class Slime {
             this.nivel = 4;
         }
         
+        public void mythic(){
+            String[] nombres = {"Michelle Padilla","Zapata","Ulloa","Karla"};
+            int n = nombres.length;
+            Random rnd = new Random();
+            this.nombre = nombres[rnd.nextInt(0,n)];
+            this.nivel = 10;
+        }
+        
         public void calcular_stats(){
             this.nombre += " el slime";
             this.vida_actual = 15 + (1.5 * nivel);
             this.daño = (nivel * 2) + (2.5 * (nivel*.5));
             this.xp = 2 + (nivel * 6);
+        }
+        
+        public void recibirDaño(double daño){
+            vida_actual -= daño;
+            vida_actual = Math.max(vida_actual, 0);
+        }
+        
+        public boolean vivo(){
+            return vida_actual > 0;
         }
         
         public void mostrar_stats(){
@@ -77,7 +95,7 @@ public class Slime {
             System.out.println("Rareza: "+rareza);
             System.out.println("Nivel: "+nivel);
             System.out.println("Vida Actual: "+vida_actual);
-            System.out.println("Daño: "+daño);
+            System.out.println("Ataque: "+daño);
             System.out.println("Xp: "+xp);
         }
 }
