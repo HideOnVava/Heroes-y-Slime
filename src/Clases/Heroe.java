@@ -6,7 +6,7 @@ public class Heroe {
     //Atributos:
         private String nombre;
         private int nivel;
-        private int xp;
+        private double xp;
         private double vida_actual;
         private double vida_maxima;
         private int fuerza;
@@ -30,8 +30,8 @@ public class Heroe {
         public int getNivel() {return nivel;}
         public void setNivel(int nivel) {this.nivel = nivel;}
         
-        public int getXp() {return xp;}
-        public void setXp(int xp) {this.xp = xp;}
+        public double getXp() {return xp;}
+        public void setXp(double xp) {this.xp = xp;}
         
         public double getVidaActual() {return vida_actual;}
         public void setVidaActual(int vida_actual) {this.vida_actual = vida_actual;}
@@ -61,12 +61,15 @@ public class Heroe {
             System.out.println("Ataque: "+ getAtaque());
         }
         
-        public void recibirXp(int xp_obtenida){
+        public boolean recibirXp(int xp_obtenida){
+            boolean subir_nivel = false;
             xp += xp_obtenida;
-            if(xp >= (nivel*4.5)){
-                xp = xp - (int)(nivel*4.5);
+            while(xp >= (nivel*5.5)+2){
+                xp = xp - ((nivel*5.5)+2);
                 subirNivel();
+                subir_nivel = true;
             }
+            return subir_nivel;
         }
         
         public void recibirDaño(double daño){
@@ -76,9 +79,10 @@ public class Heroe {
         
         public void subirNivel(){
             nivel++;
-            vida_maxima += (5*nivel) + 2;
+            vida_maxima += 4.5;
             vida_actual = vida_maxima;
             fuerza += 2;
+            System.out.println("Subiste a nivel "+nivel);
         }
         
         public boolean vivo(){

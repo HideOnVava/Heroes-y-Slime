@@ -79,8 +79,8 @@ public class Slime {
             this.nombre += " EL SLIME";
             this.vida_maxima = 15 + (1.5 * nivel);
             this.vida_actual = vida_maxima;
-            this.daño = (nivel * 2) + (2.5 * (nivel*.5));
-            this.xp = 2 + (nivel * 6);
+            this.daño = (nivel * 3) + 2.5;
+            this.xp = 1 + (nivel * 3);
         }
         
         public void recibirDaño(double daño){

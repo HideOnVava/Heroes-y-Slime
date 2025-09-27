@@ -41,7 +41,7 @@ public class Aventura {
             System.out.println("2. Inventario");
             System.out.println("3. ");
             System.out.println("4. ");
-            System.out.println("5. Salir");
+            System.out.println("5. Volver a la taberna");
             System.out.println("===============================");
             System.out.print("Ingresa una opcion: ");
             return MyScanner.nextInt();
@@ -66,13 +66,20 @@ public class Aventura {
                     n = opcionesTurno();
                     switch(n){
                         case 1 -> {heroe_ataca();}
-                        case 2 -> {s1.recibirDaño(999);}
+                        case 2 -> {return;}
                     }
                 }else{
                     //TURNO DEL SLIME
                     turno_slime();
                 }
                 turno = !turno;
+            }
+            //EL COMBATE TERMINO
+            //===============================================
+            if(h1.vivo()){
+                h1_recompensas_victoria();
+            }else{
+                h1_pantalla_muerte();
             }
             //===============================================
         }
@@ -139,8 +146,24 @@ public class Aventura {
             esperar("Ronda terminada!");
         }
         
+        public void h1_recompensas_victoria(){
+            limpiar();
+            System.out.println("COMBATE TERMINADO.");
+            System.out.println("===================================");
+            System.out.println("HAS DERROTADO A "+s1.nombre);
+            boolean subir_nivel = h1.recibirXp(s1.xp);
+            System.out.println("===================================");
+            esperar("Reclama tus recompensas");
+        }
         
-        
+        public void h1_pantalla_muerte(){
+            limpiar();
+            System.out.println("COMBATE TERMINADO.");{
+            System.out.println("===================================");
+            System.out.println(s1.nombre + " HA DERROTADO AL HEROE");
+            esperar("Has muerto");
+        }
+        }
         
         
         
@@ -169,7 +192,7 @@ public class Aventura {
         
         public void esperar(String s){
             Scanner MyScanner = new Scanner(System.in);
-            System.out.println(s + " Presiona enter para continuar.");
+            System.out.print(s + " Presiona enter para continuar.");
             MyScanner.nextLine();
         }
 }
