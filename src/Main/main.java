@@ -47,12 +47,15 @@ public class main {
             return;
         }
         Scanner mS = new Scanner(System.in);
+        System.out.println("CREACION DE HEROE.");
+        System.out.println("===================================");
         System.out.print("Ingresa el nombre de tu heroe: ");
         String nombre_hero = mS.nextLine();
         Heroe hero_a = new Heroe(nombre_hero);
         arreglo[indice] = hero_a;
         indice++;
-        esperar("Heroe "+nombre_hero+" creado exitosamente!");
+        System.out.println("===================================");
+        esperar("El heroe ["+hero_a.getNombre()+"] a nacido!");
     }
     
     public static void listaheroes(){
@@ -62,6 +65,7 @@ public class main {
             return;
         }
         System.out.println("LISTA DE TUS HEROES.");
+        System.out.println("===================================");
         for(int i = 0; i < indice; i++){
             String s = "";
             if(arreglo[i].vivo()){
@@ -175,11 +179,6 @@ public class main {
         nueva_aventura.inicio();
         limpiar();
         arreglo[id] = nueva_aventura.getHeroe();
-        if(arreglo[id].vivo()){
-            esperar("Volviste vivo al campamento!");
-        }else{
-            esperar("Tu heroe a muerto!");
-        }
     }
     
     

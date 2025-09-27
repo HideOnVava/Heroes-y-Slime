@@ -19,9 +19,8 @@ public class Aventura {
         public Heroe getHeroe(){return h1;}
     //Metodos:
         public void inicio(){
-            int n = 0;
             while(h1.vivo()){
-                n = menu();
+                int n = menu();
                 switch(n){
                     case 1 -> {combate();}
                     case 2 -> {inventario();}
@@ -76,7 +75,6 @@ public class Aventura {
                 turno = !turno;
             }
             //===============================================
-            esperar(".");
         }
         
         public void inventario(){
@@ -113,12 +111,28 @@ public class Aventura {
         }
         
         public void heroe_ataca(){
-            s1.recibirDaño(h1.getAtaque());
+            limpiar();
+            double ataque = h1.getAtaque();
+            System.out.println("TURNO DEL HEROE.");
+            System.out.println("El heroe ataca al slime +"+ataque +" infligido!");
+            System.out.println("Vida del slime: "+s1.vida_actual);
+            s1.recibirDaño(ataque);
+            System.out.println("===============================================");
         }
         
         public void turno_slime(){
-            //Slime ataca
-            h1.recibirDaño(s1.daño);
+            Random rnd = new Random();
+            int n = rnd.nextInt(1,101);
+            System.out.println("TURNO DEL SLIME.");
+            if(n <= 10){
+                System.out.println("El slime se ha curado - "+s1.vida_actual);
+                s1.curarse();
+            }else if(n <= 100){
+                System.out.println("Turno enemigo : El slime te ha atacado -"+s1.daño +" vida");
+                h1.recibirDaño(s1.daño);
+            }
+            System.out.println("===============================================");
+            esperar("Ronda terminada!");
         }
         
         

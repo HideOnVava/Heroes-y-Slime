@@ -4,10 +4,10 @@ import java.util.Random;
 
 public class Slime {
     //Atributos:
-        private String nombre;
-        private String rareza;
-        private int nivel;
-        private double vida_actual;
+        public String nombre;
+        public String rareza;
+        public int nivel;
+        public double vida_actual;
         public double daño;
         public int xp;
     //Constructores:
@@ -83,6 +83,10 @@ public class Slime {
         public void recibirDaño(double daño){
             vida_actual -= daño;
             vida_actual = Math.max(vida_actual, 0);
+        }
+        
+        public void curarse(){
+            vida_actual += (nivel/2) * 5;
         }
         
         public boolean vivo(){
