@@ -8,7 +8,7 @@ public class Heroe {
         private int nivel;
         private int xp;
         private double vida_actual;
-        private int vida_maxima;
+        private double vida_maxima;
         private int fuerza;
         
         public Mochila mochila;
@@ -36,8 +36,8 @@ public class Heroe {
         public double getVidaActual() {return vida_actual;}
         public void setVidaActual(int vida_actual) {this.vida_actual = vida_actual;}
         
-        public int getVidaMaxima() {return vida_maxima;}
-        public void setVidaMaxima(int vida_maxima) {this.vida_maxima = vida_maxima;}
+        public double getVidaMaxima() {return vida_maxima;}
+        public void setVidaMaxima(double vida_maxima) {this.vida_maxima = vida_maxima;}
         
         public int getFuerza() {return fuerza;}
         public void setFuerza(int fuerza) {this.fuerza = fuerza;}
@@ -76,7 +76,7 @@ public class Heroe {
         
         public void subirNivel(){
             nivel++;
-            vida_maxima += (5*nivel);
+            vida_maxima += (5*nivel) + 2;
             vida_actual = vida_maxima;
             fuerza += 2;
         }

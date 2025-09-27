@@ -104,32 +104,36 @@ public class Aventura {
         public int opcionesTurno(){
             limpiar();
             Scanner MyScanner = new Scanner(System.in);
+            System.out.println("TURNO DEL HEROE.");
+            System.out.println("===================================");
             System.out.println("1. Atacar!");
             System.out.println("2. Huir!");
+            System.out.println("===================================");
             System.out.print("Ingresa una opcion: ");
             return MyScanner.nextInt();
         }
         
         public void heroe_ataca(){
             limpiar();
+            System.out.println("===============================================");
             double ataque = h1.getAtaque();
-            System.out.println("TURNO DEL HEROE.");
-            System.out.println("El heroe ataca al slime +"+ataque +" infligido!");
-            System.out.println("Vida del slime: "+s1.vida_actual);
+            System.out.println("Realizas "+ataque +" de damage!");
             s1.recibirDaño(ataque);
+            System.out.println("Vida del slime: "+s1.vida_actual+"/"+s1.vida_maxima);
             System.out.println("===============================================");
         }
         
         public void turno_slime(){
             Random rnd = new Random();
             int n = rnd.nextInt(1,101);
-            System.out.println("TURNO DEL SLIME.");
+            System.out.println("TURNO DE "+s1.nombre);
             if(n <= 10){
-                System.out.println("El slime se ha curado - "+s1.vida_actual);
+                System.out.println("El slime se ha curado - "+s1.vida_actual+"/"+s1.vida_maxima);
                 s1.curarse();
             }else if(n <= 100){
-                System.out.println("Turno enemigo : El slime te ha atacado -"+s1.daño +" vida");
+                System.out.println("El slime realiza "+s1.daño +" de damage");
                 h1.recibirDaño(s1.daño);
+                System.out.println("Vida del heroe: "+h1.getVidaActual()+"/"+h1.getVidaMaxima());
             }
             System.out.println("===============================================");
             esperar("Ronda terminada!");

@@ -8,6 +8,7 @@ public class Slime {
         public String rareza;
         public int nivel;
         public double vida_actual;
+        public double vida_maxima;
         public double daño;
         public int xp;
     //Constructores:
@@ -16,6 +17,7 @@ public class Slime {
             this.rareza = rareza;
             nivel = 0;
             vida_actual = 0;
+            vida_maxima = 0;
             daño = 0;
             xp = 0;
         }
@@ -33,8 +35,8 @@ public class Slime {
         }
         
         public void comun(){
-            String[] nombres = {"Jacob","Juan","Raul","Victor","Alejandro","Pepe","Paco"
-                    ,"Isaac","Josue","Maiky2"};
+            String[] nombres = {"JACOB","JUAN","RAUL","VICTOR","ALEJANDRO","PEPE","PACO"
+                    ,"ISAAC","JOSUE","MAIKY 2"};
             int n = nombres.length;
             Random rnd = new Random();
             this.nombre = nombres[rnd.nextInt(0,n)];
@@ -42,7 +44,7 @@ public class Slime {
         }
         
         public void raro(){
-            String[] nombres = {"Fran","Bryam","Neo","Alexis","Gael el acosador","Eidan"};
+            String[] nombres = {"FRAN","BRYAM","NEO","ALEXIS","GAEL","EIDAN"};
             int n = nombres.length;
             Random rnd = new Random();
             this.nombre = nombres[rnd.nextInt(0,n)];
@@ -50,7 +52,7 @@ public class Slime {
         }
         
         public void epico(){
-            String[] nombres = {"Yiyo","Daniel","David","Guti"};
+            String[] nombres = {"YIYO","DANIEL","DAVID","GUTI"};
             int n = nombres.length;
             Random rnd = new Random();
             this.nombre = nombres[rnd.nextInt(0,n)];
@@ -58,7 +60,7 @@ public class Slime {
         }
         
         public void legendario(){
-            String[] nombres = {"Toston el Ajolote","Oswi el profe","Maiky el god"};
+            String[] nombres = {"TOSTON EL AJOLOTE","OSWI","MAIKY"};
             int n = nombres.length;
             Random rnd = new Random();
             this.nombre = nombres[rnd.nextInt(0,n)];
@@ -66,7 +68,7 @@ public class Slime {
         }
         
         public void mythic(){
-            String[] nombres = {"Michelle Padilla","Zapata","Ulloa","Karla"};
+            String[] nombres = {"MICHELLE PADILLA","ZAPATA","ULLOA","KARLA"};
             int n = nombres.length;
             Random rnd = new Random();
             this.nombre = nombres[rnd.nextInt(0,n)];
@@ -74,8 +76,9 @@ public class Slime {
         }
         
         public void calcular_stats(){
-            this.nombre += " el slime";
-            this.vida_actual = 15 + (1.5 * nivel);
+            this.nombre += " EL SLIME";
+            this.vida_maxima = 15 + (1.5 * nivel);
+            this.vida_actual = vida_maxima;
             this.daño = (nivel * 2) + (2.5 * (nivel*.5));
             this.xp = 2 + (nivel * 6);
         }
@@ -87,6 +90,7 @@ public class Slime {
         
         public void curarse(){
             vida_actual += (nivel/2) * 5;
+            vida_actual = Math.min(vida_actual,vida_maxima);
         }
         
         public boolean vivo(){
@@ -99,6 +103,7 @@ public class Slime {
             System.out.println("Rareza: "+rareza);
             System.out.println("Nivel: "+nivel);
             System.out.println("Vida Actual: "+vida_actual);
+            System.out.println("Vida maxima: "+vida_maxima);
             System.out.println("Ataque: "+daño);
             System.out.println("Xp: "+xp);
         }
